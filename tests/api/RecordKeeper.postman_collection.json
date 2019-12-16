@@ -1,0 +1,213 @@
+{
+	"info": {
+		"_postman_id": "67f425c6-2bbd-4e8f-b614-5598bd1bff4a",
+		"name": "RecordKeeper",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Healthcheck",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ad27674d-b7e6-46dc-a899-e317b0aa36e2",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/healthcheck",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"healthcheck"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create record",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "65201046-4cb8-4fae-b36f-726c51607e6c",
+						"exec": [
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "Postman Bobby male Blue 10/05/1967"
+				},
+				"url": {
+					"raw": "{{host}}/records",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"records"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create bad record",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "65201046-4cb8-4fae-b36f-726c51607e6c",
+						"exec": [
+							"pm.test(\"Bad POST request\", function () {",
+							"     pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "jibberish"
+				},
+				"url": {
+					"raw": "{{host}}/records",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"records"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/records/gender",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "641d4405-e61d-4477-8a75-176742bd1f0f",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/records/gender",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"records",
+						"gender"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/records/birthdate",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "986eab83-6d46-4508-a63e-466d97190515",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/records/birthdate",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"records",
+						"birthdate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/records/name",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "cdc81f04-98da-423d-bf99-dcf19eb00d31",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/records/gender",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"records",
+						"gender"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
